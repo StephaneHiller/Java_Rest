@@ -21,55 +21,17 @@ public class Character {
 
     private String name;
     private int level;
+    private String role;
 
     public Character() {
     }
 
-    public Character(String name, int level) {
+    public Character(String name, int level, String role) {
         this.name = name;
         this.level = level;
+        this.role = role;
     }
 
-
-
-
-/*
-
-
-    public static String deleteCharacter(String name) {
-        int tailleInit, tailleFinal;
-        tailleInit = Characters.size();
-        for(int i= 0; i<Characters.size();i++){
-            if (Characters.get(i).equals(name)){
-                Characters.remove(i);
-                i--;
-            }
-        }
-        tailleFinal = Characters.size();
-        if(tailleInit > tailleFinal) {
-            return "Character delete !! \n";
-        }
-        else{
-            return "No character with this name !! \n";
-        }
-    }
-
-    public static String changeCharacterName(String name, String rename) {
-        int cpt =0;
-        for(int i = 0; i< Characters.size();i++){
-            if (Characters.get(i).equals(name)){
-                Characters.set(i,rename);
-                cpt++;
-            }
-        }
-        if(cpt != 0){
-            return "Name changed !! \n";
-        }
-        else {
-            return "No character with this name !! \n";
-        }
-    }
-*/
     public int getId() {
         return Id;
     }
@@ -81,6 +43,10 @@ public class Character {
     public int getLevel() {
         return level;
     }
+
+    public String getRole() {
+        return role;
+    }   
 
     public void setId(int id) {
         Id = id;
@@ -94,12 +60,12 @@ public class Character {
         this.level = level;
     }
 
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     @Override
     public String toString() {
-        return "Character{" +
-                "Id=" + Id +
-                ", name='" + name + '\'' +
-                ", level=" + level +
-                '}';
+        return "Hi! My name is " + name + ", I'm a " + role + " lvl:" + level + ".  || Id : " + Id;
     }
 }

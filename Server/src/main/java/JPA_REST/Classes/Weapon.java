@@ -7,7 +7,7 @@ import javax.persistence.*;
  */
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "allWeapons", query = "select d from Weapon ")
+        @NamedQuery(name = "allWeapon" , query = "select d from Weapon d")
 })
 public class Weapon {
 

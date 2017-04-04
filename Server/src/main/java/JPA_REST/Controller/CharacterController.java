@@ -21,9 +21,18 @@ public class CharacterController {
     public void addCharacterInList(Character character) {
 
         EntityTransaction transac = entityManager.getTransaction();
-
         transac.begin();
         entityManager.persist(character);
+        transac.commit();
+    }
+
+    public void addCharacter(String name, int lvl, String classe) {
+
+        EntityTransaction transac = entityManager.getTransaction();
+        Character character1 = new Character(name, lvl, classe);
+
+        transac.begin();
+        entityManager.persist(character1);
         transac.commit();
     }
 
@@ -54,9 +63,44 @@ public class CharacterController {
         List<Character> characters = query.getResultList();
 
         System.out.println("\n Character :");
-        for (Character item : characters)
-            System.out.println(item);
+        for (Character character : characters)
+            System.out.println(character);
 
         transac.commit();
+    }
+
+    public void deleteCharacter(String name) {
+        EntityTransaction transac = entityManager.getTransaction();
+        transac.begin();
+
+        TypedQuery<Character> query = entityManager.createNamedQuery("findCharacter", Character.class);
+        query.setParameter("name", name);
+        List<Character> characters = query.getResultList();
+
+        for (Character character : characters)
+            entityManager.remove(character);
+
+        System.out.println("Character(s) removed !!!");
+
+        transac.commit();
+    }
+
+    public void changeCharacterName(String name, String rename) {
+        EntityTransaction transac = entityManager.getTransaction();
+        transac.begin();
+
+        TypedQuery<Character> query = entityManager.createNamedQuery("findCharacter", Character.class);
+        query.setParameter("name", name);
+        List<Character> characters = query.getResultList();
+
+        for (Character character : characters) {
+            character.setName(rename);
+            System.out.println(character.toString());
+        }
+
+        System.out.println("Character(s) renamed !!! ");
+
+        transac.commit();
+
     }
 }

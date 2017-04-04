@@ -1,6 +1,7 @@
 package JPA_REST.Test;
 
 import JPA_REST.Classes.Character;
+import JPA_REST.Classes.Weapon;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -15,14 +16,17 @@ import java.util.List;
 public class Test1 {
 
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("testh2");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("H2");
         EntityManager em = emf.createEntityManager();
 
-        Character c1 = new Character("name1", 1);
-        Character c2 = new Character("name2", 2);
-        Character c3 = new Character("name3", 3);
-        Character c4 = new Character("name4", 4);
+        Character c1 = new Character("Yhujiko", 1 , "Priest");
+        Character c2 = new Character("Waemiko", 2, "Druid");
+        Character c3 = new Character("Lannae", 3, "Mage");
+        Character c4 = new Character("Chaeton", 4, "War");
 
+        Weapon w1 = new Weapon("Dadao","Sword","Sharp");
+        Weapon w2 = new Weapon("Morgenstern","Mace","Blunt");
+        Weapon w3 = new Weapon("Axe","Axe","Sharp");
 
 
         EntityTransaction transac = em.getTransaction();
@@ -32,6 +36,9 @@ public class Test1 {
         em.persist(c2);
         em.persist(c3);
         em.persist(c4);
+        em.persist(w1);
+        em.persist(w2);
+        em.persist(w3);
         transac.commit();
     }
 }
