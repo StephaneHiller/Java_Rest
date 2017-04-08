@@ -1,4 +1,4 @@
-package JPA_REST.REST;
+package JPA_REST.Ressource;
 
 import JPA_REST.Controller.WeaponController;
 

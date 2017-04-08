@@ -1,9 +1,7 @@
 package JPA_REST.Classes;
 
 import javax.persistence.*;
-import javax.xml.stream.events.Characters;
-import java.util.ArrayList;
-import java.util.List;
+
 
 /**
  * Created by stephane on 03/04/17.
@@ -46,7 +44,7 @@ public class Character {
 
     public String getRole() {
         return role;
-    }   
+    }
 
     public void setId(int id) {
         Id = id;

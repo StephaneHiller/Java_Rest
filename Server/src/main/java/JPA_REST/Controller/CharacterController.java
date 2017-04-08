@@ -26,16 +26,16 @@ public class CharacterController {
         transac.commit();
     }
 
-    public void addCharacter(String name, int lvl, String classe) {
-
+    public List<Character> getAllCharacter() {
         EntityTransaction transac = entityManager.getTransaction();
-        Character character1 = new Character(name, lvl, classe);
-
         transac.begin();
-        entityManager.persist(character1);
-        transac.commit();
+        TypedQuery<Character> query = entityManager.createNamedQuery("allCharacter", Character.class);
+        List<Character> characters = query.getResultList();
+        return characters;
     }
 
+
+    /*
     public void getAllCharacter() {
 
 
@@ -52,7 +52,7 @@ public class CharacterController {
 
         transac.commit();
     }
-
+*/
     public void getCharacter(String name) {
         EntityTransaction transac = entityManager.getTransaction();
 

@@ -1,10 +1,11 @@
-package JPA_REST.REST;
+package JPA_REST.Ressource;
 
 import JPA_REST.Classes.Character;
 import JPA_REST.Controller.CharacterController;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 /**
  * Created by shiller994 on 20/01/17.
@@ -18,7 +19,8 @@ public class CharacterRessources {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public void listeCharacters(){
-        characterController.getAllCharacter();
+        List<Character> characters = characterController.getAllCharacter();
+        System.out.println(characters.toString());
     }
 
     @POST
@@ -28,16 +30,7 @@ public class CharacterRessources {
         characterController.addCharacterInList(character);
         return "Character add ! \n";
     }
-/*
 
-    @POST
-    @Path("/{nameCharacter}/{lvl}/{classe}")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String addCharacter(@PathParam("nameCharacter") String name, @PathParam("lvl") int lvl, @PathParam("classe") String classe){
-        characterController.addCharacter(name,lvl,classe);
-        return "Character add ! \n";
-    }
-*/
     @GET
     @Path("/{name}")
     @Produces(MediaType.TEXT_PLAIN)

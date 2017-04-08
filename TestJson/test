@@ -1,0 +1,1 @@
+curl -H "Content-Type: application/json" -X POST -d '{"name":"xyz","level":34, "role":"testclasse" }' http://localhost:8080/myapp/Character
