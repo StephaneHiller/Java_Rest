@@ -27,5 +27,38 @@ public class Weapon {
         this.damageType = damageType;
     }
 
+    public void update(Weapon weapon) {
+        this.name = weapon.name;
+        this.type = weapon.type;
+        this.damageType = weapon.damageType;
+    }
 
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getDamageType() {
+        return damageType;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setDamageType(String damageType) {
+        this.damageType = damageType;
+    }
 }

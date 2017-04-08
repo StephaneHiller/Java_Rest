@@ -1,4 +1,4 @@
-package JPA_REST.Ressource;
+package JPA_REST.Ressource_Response.Response;
 
 import JPA_REST.Classes.Character;
 

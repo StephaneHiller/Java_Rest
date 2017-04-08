@@ -1,7 +1,8 @@
-package JPA_REST.Ressource;
+package JPA_REST.Ressource_Response.Ressource;
 
 import JPA_REST.Classes.Character;
 import JPA_REST.Controller.CharacterController;
+import JPA_REST.UtilS.JsonObject;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -32,25 +33,29 @@ public class CharacterRessources {
     }
 
     @GET
-    @Path("/{name}")
-    @Produces(MediaType.TEXT_PLAIN)
-    public void getChien(@PathParam("name") String name){
-        characterController.getCharacter(name);
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getChien(@PathParam("id") int id){
+        Character character = characterController.getCharacter(id);
+        String parameters = JsonObject.genCharacterJSON(character);
+        return parameters;
     }
 
-
     @DELETE
-    @Path("/Delete/{name}")
+    @Path("/Delete/{id}")
     @Produces(MediaType.TEXT_PLAIN)
-    public void deleteChien(@PathParam("name") String name){
-        characterController.deleteCharacter(name);
+    public String deleteChien(@PathParam("id") int id){
+        characterController.deleteCharacter(id);
+        return "Character deleted !";
     }
 
     @PUT
-    @Path("/{name}/to/{rename}")
+    @Path("/{id}")
     @Produces(MediaType.TEXT_PLAIN)
-    public void changeName(@PathParam("name") String name , @PathParam("rename") String rename) {
-        characterController.changeCharacterName(name,rename);
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String changeName(@PathParam("id") int id , Character newCharacter) {
+        characterController.changeCharacter(id,newCharacter);
+        return "Character changed !";
     }
 
 

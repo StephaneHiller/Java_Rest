@@ -1,1 +1,17 @@
 curl -H "Content-Type: application/json" -X POST -d '{"name":"xyz","level":34, "role":"testclasse" }' http://localhost:8080/myapp/Character
+
+
+
+curl -H "Content-Type: application/json" -X PUT -d '{"name":"avc","level":4, "role":"changerole" }' http://localhost:8080/myapp/Character/3701
+
+
+curl -X DELETE http://localhost:8080/myapp/Character/Delete/3851
+
+curl -H "Content-Type: application/json" -X POST -d '{"name":"testName","type":"testType", "damageType":"testDamageType" }' http://localhost:8080/myapp/Weapon
+
+
+
+curl -H "Content-Type: application/json" -X PUT -d '{"name":"testREname","type":"testRetype", "damageType":"testReDamageType" }' http://localhost:8080/myapp/Weapon/3901
+
+
+curl -X DELETE http://localhost:8080/myapp/Weapon/Delete/3901

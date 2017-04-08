@@ -1,6 +1,7 @@
 package JPA_REST.Classes;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -28,6 +29,15 @@ public class Character {
         this.name = name;
         this.level = level;
         this.role = role;
+    }
+
+    @OneToMany(cascade = CascadeType.PERSIST)
+    List<Weapon> weapons;
+
+    public void update(Character character) {
+        this.name = character.name;
+        this.level = character.level;
+        this.role = character.role;
     }
 
     public int getId() {
@@ -61,6 +71,7 @@ public class Character {
     public void setRole(String role) {
         this.role = role;
     }
+
 
     @Override
     public String toString() {
