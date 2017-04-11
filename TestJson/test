@@ -1,4 +1,4 @@
-curl -H "Content-Type: application/json" -X POST -d '{"name":"xyz","level":34, "role":"testclasse" }' http://localhost:8080/myapp/Character
+curl -H "Content-Type: application/json" -X POST -d '{"name":"xyz","level":34, "role":"testclasse" }' http://172.17.0.1:8080/myapp/Character
 
 
 
@@ -15,3 +15,9 @@ curl -H "Content-Type: application/json" -X PUT -d '{"name":"testREname","type":
 
 
 curl -X DELETE http://localhost:8080/myapp/Weapon/Delete/3901
+
+
+
+sudo docker run -d -t -i --name server -p 8080:8080 --link mysql:database app/server:1.0 sh
+
+sudo docker run -d -t -i --name mysql app/database:1.0

@@ -1,0 +1,19 @@
+-------------------------------------------------------------------------------
+Test set: tp1.MyResourceTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.339 sec <<< FAILURE! - in tp1.MyResourceTest
+testGetIt(tp1.MyResourceTest)  Time elapsed: 1.275 sec  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at org.glassfish.jersey.client.JerseyInvocation.convertToException(JerseyInvocation.java:1020)
+	at org.glassfish.jersey.client.JerseyInvocation.translate(JerseyInvocation.java:819)
+	at org.glassfish.jersey.client.JerseyInvocation.access$700(JerseyInvocation.java:92)
+	at org.glassfish.jersey.client.JerseyInvocation$2.call(JerseyInvocation.java:701)
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:315)
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:297)
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:228)
+	at org.glassfish.jersey.process.internal.RequestScope.runInScope(RequestScope.java:444)
+	at org.glassfish.jersey.client.JerseyInvocation.invoke(JerseyInvocation.java:697)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.method(JerseyInvocation.java:420)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.get(JerseyInvocation.java:316)
+	at tp1.MyResourceTest.testGetIt(MyResourceTest.java:46)
+
