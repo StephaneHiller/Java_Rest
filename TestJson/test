@@ -1,4 +1,4 @@
-curl -H "Content-Type: application/json" -X POST -d '{"name":"xyz","level":34, "role":"testclasse" }' http://172.17.0.1:8080/myapp/Character
+curl -H "Content-Type: application/json" -X POST -d '{"name":"xyz","level":34, "role":"testclasse" }' http://172.17.0.1:8080/myapp/Person
 
 
 

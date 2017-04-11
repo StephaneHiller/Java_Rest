@@ -10,8 +10,44 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="shiller994.masterdapm.univ_tln.fr.simpleapi.MainActivity">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get"
+        android:id="@+id/b_get" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Post"
+        android:id="@+id/b_post"
+        android:layout_toRightOf="@id/b_get"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get All"
+        android:id="@+id/b_getAll"
+        android:layout_toRightOf="@id/b_post"/>
+
+
+    <EditText
+        android:layout_width= "200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/b_get"
+        android:id="@+id/e_id"
+        android:text="1"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="Hello World!"
+        android:id="@+id/text"
+        android:layout_below="@id/e_id"/>
+
+
+
+
+
+
 </RelativeLayout>
