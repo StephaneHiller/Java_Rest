@@ -29,7 +29,7 @@ public class PersonRessources {
     @Consumes(MediaType.APPLICATION_JSON)
     public String addPerson(Person Person){
         PersonController.addPersonInList(Person);
-        return "Person add ! \n";
+        return JsonObject.genPersonJSON(Person);
     }
 
     @GET
@@ -55,7 +55,7 @@ public class PersonRessources {
     @Consumes(MediaType.APPLICATION_JSON)
     public String changeName(@PathParam("id") int id , Person newPerson) {
         PersonController.changePerson(id,newPerson);
-        return "Person changed !";
+        return JsonObject.genPersonJSON(newPerson);
     }
 
 

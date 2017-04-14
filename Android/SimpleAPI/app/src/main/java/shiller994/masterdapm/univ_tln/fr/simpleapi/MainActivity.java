@@ -137,12 +137,12 @@ public class MainActivity extends AppCompatActivity  {
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, json, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
-                    t_text.setText("Character add");
+                    t_text.setText("Character add !");
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    t_text.setText("Character add !");
+                    t_text.setText("That doesn't work!");
                     Log.i("TEST",error.toString());
 
                 }
@@ -172,7 +172,7 @@ public class MainActivity extends AppCompatActivity  {
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    t_text.setText("Character changed !");
+                    t_text.setText("That doesn't work!");
                     Log.i("TEST",error.toString());
 
                 }
