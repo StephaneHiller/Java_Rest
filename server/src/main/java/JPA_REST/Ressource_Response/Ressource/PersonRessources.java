@@ -25,7 +25,7 @@ public class PersonRessources {
     }
 
     @POST
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public String addPerson(Person Person){
         PersonController.addPersonInList(Person);

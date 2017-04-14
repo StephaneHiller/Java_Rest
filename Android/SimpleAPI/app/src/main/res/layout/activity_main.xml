@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -8,35 +8,83 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context="shiller994.masterdapm.univ_tln.fr.simpleapi.MainActivity">
 
-    <Button
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Get"
-        android:id="@+id/b_get" />
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Get"
+            android:id="@+id/b_get" />
 
-    <Button
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Get All"
+            android:id="@+id/b_getAll"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Post"
-        android:id="@+id/b_post"
-        android:layout_toRightOf="@id/b_get"/>
+        android:orientation="horizontal">
 
-    <Button
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Post"
+            android:id="@+id/b_post" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Put"
+            android:id="@+id/b_put" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            android:id="@+id/b_delete" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Get All"
-        android:id="@+id/b_getAll"
-        android:layout_toRightOf="@id/b_post"/>
+        android:orientation="horizontal">
+        <EditText
+            android:layout_width= "83dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/e_id"
+            android:hint="Id"/>
 
+        <EditText
+            android:layout_width= "83dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/e_name"
+            android:hint="Name"/>
 
-    <EditText
-        android:layout_width= "200dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/b_get"
-        android:id="@+id/e_id"
-        android:text="1"/>
+        <EditText
+            android:layout_width= "83dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/e_Level"
+            android:hint="Level"/>
+
+        <EditText
+            android:layout_width= "83dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/e_role"
+            android:hint="Role"/>
+    </LinearLayout>
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -50,4 +98,4 @@
 
 
 
-</RelativeLayout>
+</LinearLayout>

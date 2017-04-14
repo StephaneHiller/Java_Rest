@@ -21,8 +21,14 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
+import org.androidannotations.rest.spring.annotations.RestService;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.http.ResponseEntity;
+
+import java.util.HashMap;
+
+import shiller994.masterdapm.univ_tln.fr.simpleapi.network.PersonAPI;
 
 
 @EActivity(R.layout.activity_main)
@@ -37,6 +43,10 @@ public class MainActivity extends AppCompatActivity  {
     @ViewById(R.id.b_post)
     Button b_post;
 
+    @ViewById(R.id.b_put)
+    Button b_put;
+
+
     @ViewById(R.id.b_getAll)
     Button b_getAll;
 
@@ -44,9 +54,21 @@ public class MainActivity extends AppCompatActivity  {
     TextView t_text;
 
     @ViewById(R.id.e_id)
-    EditText e_text;
+    EditText e_id;
 
+    @ViewById(R.id.e_name)
+    EditText e_name;
 
+    @ViewById(R.id.e_Level)
+    EditText e_level;
+
+    @ViewById(R.id.e_role)
+    EditText e_role;
+
+    @RestService
+    PersonAPI personAPI;
+
+    private static final String TAG = MainActivity.class.getSimpleName();
 
     @AfterViews
     public void initialize() {
@@ -58,10 +80,7 @@ public class MainActivity extends AppCompatActivity  {
     @Click(R.id.b_get)
     void get() {
 
-        String url = "http://192.168.1.88:8080/myapp/Person/" + e_text.getText().toString();
-        //String url = "https://www.google.com";
-
-        //Toast.makeText(this, "test", Toast.LENGTH_SHORT).show();
+        String url = "http://10.21.128.98:8080/myapp/Person/" + e_id.getText().toString();
 
         StringRequest request = new StringRequest(Request.Method.GET, url,new Response.Listener<String>() {
             @Override
@@ -82,10 +101,7 @@ public class MainActivity extends AppCompatActivity  {
     @Click(R.id.b_getAll)
     void getAll() {
 
-        String url = "http://192.168.1.88:8080/myapp/Persons";
-        //String url = "https://www.google.com";
-
-        //Toast.makeText(this, "test", Toast.LENGTH_SHORT).show();
+        String url = "http://10.21.128.98:8080/myapp/Persons";
 
         StringRequest request = new StringRequest(Request.Method.GET, url,new Response.Listener<String>() {
             @Override
@@ -101,27 +117,83 @@ public class MainActivity extends AppCompatActivity  {
             }
         });
         file.add(request);
+
+
     }
 
 
     @Click(R.id.b_post)
-    void post()  {
+    void post(){
 
-        String url = "http://192.168.1.88:8080/myapp/Person";
-        String textJson = "{\"name\":\"xyz\",\"level\":55, \"role\":\"TEST33\" }";
-        JSONObject json = null;
         try {
-            json = new JSONObject(textJson);
+            String url = "http://10.21.128.98:8080/myapp/Person/"/* + e_text.getText().toString()*/;
+            final JSONObject json;
+            json = new JSONObject("{\"name\":\""+ e_name.getText().toString() +"\",\"level\":" + e_level.getText().toString() +",\"role\":\" " + e_role.getText().toString() + " \"}");
+
+            t_text.setText(json.toString());
+
+            Log.i("TEST",json.toString());
+
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, json, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    t_text.setText("Character add");
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    t_text.setText("Character add !");
+                    Log.i("TEST",error.toString());
+
+                }
+            });
+            file.add(request);
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        t_text.setText(json.toString());
+    }
 
+    @Click(R.id.b_put)
+    void changeCharacter(){
 
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, json, new Response.Listener<JSONObject>() {
+        try {
+            String url = "http://10.21.128.98:8080/myapp/Person/" + e_id.getText().toString();
+            final JSONObject json;
+            json = new JSONObject("{\"name\":\""+ e_name.getText().toString() +"\",\"level\":" + e_level.getText().toString() +",\"role\":\" " + e_role.getText().toString() + " \"}");
+
+            Log.i("TEST",json.toString());
+
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, json, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    t_text.setText("Character changed");
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    t_text.setText("Character changed !");
+                    Log.i("TEST",error.toString());
+
+                }
+            });
+            file.add(request);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Click(R.id.b_delete)
+    void delete() {
+        String url = "http://10.21.128.98:8080/myapp/Person/Delete/" + e_id.getText().toString();
+
+        StringRequest request = new StringRequest(Request.Method.DELETE, url,new Response.Listener<String>() {
             @Override
-            public void onResponse(JSONObject response) {
-                t_text.setText("Character add");
+            public void onResponse(String response) {
+                // Display the first 500 characters of the response string.
+                t_text.setText("Character deleted !");
+                //Log.d("test","ici");
             }
         }, new Response.ErrorListener() {
             @Override
@@ -130,7 +202,7 @@ public class MainActivity extends AppCompatActivity  {
             }
         });
         file.add(request);
-    }
 
+    }
 
 }
